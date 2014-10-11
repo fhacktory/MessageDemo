@@ -19,3 +19,6 @@ parameters:
     debug_toolbar:          true
     debug_redirects:        false
     use_assetic_controller: true
+
+    node: /usr/local/bin/node
+    node_paths: [/usr/local/bin/node, /usr/local/lib/node_modules, %kernel.root_dir%/Resources/node_modules]

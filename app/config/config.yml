@@ -28,19 +28,41 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    form:
+        resources:
+            - BraincraftedBootstrapBundle:Form:bootstrap.html.twig
 
 # Assetic Configuration
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        [ ]
+    bundles:        [ SCDemoBundle ]
     #java: /usr/bin/java
     filters:
+        less:
+            node: "%node%"
+            node_paths: "%node_paths%"
+            apply_to: "\.less$"
         cssrewrite: ~
         #closure:
         #    jar: "%kernel.root_dir%/Resources/java/compiler.jar"
-        #yui_css:
-        #    jar: "%kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar"
+        yui_css:
+            jar: "%kernel.root_dir%/Resources/java/yuicompressor.jar"
+        yui_js:
+            jar: "%kernel.root_dir%/Resources/java/yuicompressor.jar"
+        uglifyjs2:
+            bin: %kernel.root_dir%/Resources/node_modules/.bin/uglifyjs
+        uglifycss:
+            bin: %kernel.root_dir%/Resources/node_modules/.bin/uglifycss
+    assets:
+        bootstrap_css:
+            inputs:
+                - %kernel.root_dir%/../vendor/twbs/bootstrap/less/bootstrap.less
+                - %kernel.root_dir%/../vendor/braincrafted/bootstrap-bundle/Braincrafted/Bundle/BootstrapBundle/Resources/less/form.less
+            filters:
+                - less
+                - cssrewrite
+            output: css/bootstrap.css
 
 # Doctrine Configuration
 doctrine:
@@ -70,3 +92,11 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+# BraincrafterBootstrap Configuration
+braincrafted_bootstrap:
+    jquery_path: %kernel.root_dir%/../web/components/jquery/jquery.min.js
+    less_filter: less
+    auto_configure:
+        knp_paginator: false
+        knp_menu: false

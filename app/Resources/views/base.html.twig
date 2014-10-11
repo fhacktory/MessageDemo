@@ -4,7 +4,15 @@
         <meta charset="UTF-8" />
         <title>Smalt Fhacktory 2014 - {% block title %}{% endblock %}</title>
         {% block description %}{% endblock %}
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+            {% stylesheets filter='cssrewrite, ?uglifycss' output='css/compiled/base.css'
+                'css/bootstrap.css'
+                'components/font-awesome/css/font-awesome.css'
+            %}
+                <link href="{{ asset_url }}" rel="stylesheet" media="screen">
+            {% endstylesheets %}
+            {% include 'BraincraftedBootstrapBundle::ie8-support.html.twig' %}
+        {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
