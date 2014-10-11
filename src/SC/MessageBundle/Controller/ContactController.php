@@ -7,7 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
-class MessageController extends Controller
+class ContactController extends Controller
 {
     public function listAction()
     {
@@ -17,12 +17,13 @@ class MessageController extends Controller
             throw new AccessDeniedException();
         }
 
-        $contacts = $user->getContacts();
+        $em = $this->getDoctrine()->getManager();
+        $repository = $em->getRepository('SCUserBundle:User');
+        $contacts = $repository->getContacts($user);
 
         return $this->render(
-            'SCMessageBundle:Message:list.html.twig',
+            'SCMessageBundle:Contact:list.html.twig',
             array(
-                'user' => $user,
                 'contacts' => $contacts,
             )
         );

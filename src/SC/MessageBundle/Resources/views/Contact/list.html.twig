@@ -1,12 +1,12 @@
 {% if contacts %}
     <div class="list-group">
         {% for contact in contacts %}
-            <a class="list-group-item {{ contact.status == 0 ? 'disabled offline' : 'online'}}" role="tab" data-toggle="tab">
+            <a class="list-group-item {{ contact.isOnline() ? 'online' : 'disabled offline' }}" role="tab" data-toggle="tab">
                 <div class="media">
                     <img id="contact-{{ contact.id }}-avatar" class="avatar pull-left media-object" src="#" alt="{{ contact.username }}">
                     <div class="media-body">
                         <h4 id="contact-{{ contact.id }}-username" class="username media-heading">{{ contact.username }}</h4>
-                        <p><i class="fa-li fa fa-circle"></i> <span id="contact-{{ contact.id }}-status-info" class="contact-status-info"></span></p>
+                        <p><i class="fa fa-circle"></i> <span id="contact-{{ contact.id }}-status-info" class="contact-status-info"></span></p>
                     </div>
                 </div>
             </a>

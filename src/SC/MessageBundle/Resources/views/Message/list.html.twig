@@ -9,23 +9,31 @@
     {% endstylesheets %}
 {% endblock %}
 
+{% block header %}
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Smalt <small>Liste des messages</small></h1>
+        </div>
+    </div>
+{% endblock %}
+
 {% block content %}
     <div class="container">
         {% if user and contacts|length > 0 %}
             <div class="row">
-                <div class="col-xs-6 col-sm-4 col-md-3">
+                <div class="col-xs-5 col-sm-4 col-md-3">
                     <aside>
                         <nav class="tabs">
                             <div class="panel panel-default">
                                 <div class="panel-heading">Mes contacts</div>
-                                <div class="list-group">
+                                <div id="contacts-tab" class="list-group contacts">
                                     {% for contact in contacts %}
-                                        <a href="contact-{{ contact.id }}-tab" class="list-group-item {{ contact.status == 0 ? 'disabled offline' : 'online'}}" role="tab" data-toggle="tab">
+                                        <a href="#contact-{{ contact.id }}-tab" class="list-group-item {{ contact.isOnline() ? 'online' : 'disabled offline' }}role="tab" data-toggle="tab">
                                             <div class="media">
-                                                <img id="contact-{{ contact.id }}-avatar" class="avatar pull-left media-object" src="#" alt="{{ contact.username }}">
+                                                <img id="contact-{{ contact.id }}-avatar" class="avatar pull-left media-object" src="{{ gravatar(contact.email, 50, 'g', 'mm', true) }}" alt="{{ contact.username }}">
                                                 <div class="media-body">
                                                     <h4 id="contact-{{ contact.id }}-username" class="username media-heading">{{ contact.username }}</h4>
-                                                    <p><i class="fa-li fa fa-circle"></i> <span id="contact-{{ contact.id }}-status-info" class="contact-status-info"></span></p>
+                                                    <p><i class="fa fa-circle"></i> <span id="contact-{{ contact.id }}-status-info" class="contact-status-info"></span></p>
                                                 </div>
                                             </div>
                                         </a>
@@ -35,21 +43,23 @@
                         </nav>
                     </aside>
                 </div>
-                <div class="col-xs-6 col-sm-8 col-md-9">
+                <div class="col-xs-7 col-sm-8 col-md-9">
                     <div class="tab-content">
                         {% for contact in contacts %}
-                            <div class="tab-pane active" id="contact-{{ contact.id }}-tab">
+                            <div id="contact-{{ contact.id }}-tab" class="tab-pane {% if loop.first %}active{% endif %}">
                                 <div class="panel panel-default">
-                                    <div class="panel-heading">{{ contact.username }} - conversation</div>
-                                    <div class="panel-body">
-                                        <section id="contact-{{ contact.id }}-messages" class="messages">
+                                    <div class="panel-heading">{{ contact.username }}</div>
+                                    <div id="contact-{{ contact.id }}-messages" class="panel-body messages">
 
-                                        </section>
                                     </div>
-                                    <div class="panel-footer">
+                                    <div class="panel-body">
                                         <form>
-                                            <textarea class="form-control" rows="3"></textarea>
-                                            <button type="submit" class="btn btn-success"><i class="fa fa-send"></i> Envoyer</button>
+                                            <div class="form-group">
+                                                <textarea class="form-control" rows="3"></textarea>
+                                            </div>
+                                            <div class="form-group text-right">
+                                                <button type="submit" class="btn btn-success btn-xs"><i class="fa fa-send"></i> Envoyer</button>
+                                            </div>
                                         </form>
                                     </div>
                                 </div>
@@ -63,5 +73,14 @@
             <p><a class="btn btn-default btn-lg"><i class="fa fa-users"></i> Trouver des contacts</a></p>
         {% endif %}
     </div>
+{% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+
+    {% javascripts filter='?uglifyjs2' output='js/compiled/scmessage/message/list.js'
+        'bundles/scmessage/js/Message/list.js'
+    %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 {% endblock %}

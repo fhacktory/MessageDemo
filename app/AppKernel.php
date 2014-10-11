@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new JDare\ClankBundle\JDareClankBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
+            new Ornicar\GravatarBundle\OrnicarGravatarBundle(),
             new SC\DemoBundle\SCDemoBundle(),
             new SC\UserBundle\SCUserBundle(),
             new SC\MessageBundle\SCMessageBundle(),

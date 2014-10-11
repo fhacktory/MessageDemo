@@ -129,3 +129,9 @@ services:
     session.handler.memcache:
         class: Symfony\Component\HttpFoundation\Session\Storage\Handler\MemcacheSessionHandler
         arguments: [ @session.memcache, { prefix: %session_memcache_prefix%, expiretime: %session_memcache_expire% } ]
+
+# GravatarBundle Configuration
+ornicar_gravatar:
+    rating: g
+    size: 80
+    default: mm
