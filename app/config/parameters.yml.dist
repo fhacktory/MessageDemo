@@ -22,3 +22,6 @@ parameters:
 
     node: /usr/local/bin/node
     node_paths: [/usr/local/bin/node, /usr/local/lib/node_modules, %kernel.root_dir%/Resources/node_modules]
+
+    clank_host: fhacktory.dev
+    clank_port: 8080

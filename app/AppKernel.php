@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new JDare\ClankBundle\JDareClankBundle(),
             new SC\DemoBundle\SCDemoBundle(),
             new SC\UserBundle\SCUserBundle(),
         );

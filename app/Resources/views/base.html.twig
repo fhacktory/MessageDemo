@@ -42,9 +42,9 @@
             <div id="footer">
                 {% block footer %}{% endblock %}
             </div>
-            <div id="javascripts">
-                {% block javascripts %}{% endblock %}
-            </div>
+            {% block javascripts %}
+                {{ clank_client() }}
+            {% endblock %}
         </div>
     </body>
 </html>

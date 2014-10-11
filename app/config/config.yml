@@ -36,7 +36,7 @@ twig:
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        [ SCDemoBundle ]
+    bundles:        [ SCDemoBundle, JDareClankBundle ]
     #java: /usr/bin/java
     filters:
         less:
@@ -106,3 +106,9 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: SC\UserBundle\Entity\User
+
+# Clank Configuration
+clank:
+    web_socket_server:
+        host: "%clank_host%"
+        port: "%clank_port%"
