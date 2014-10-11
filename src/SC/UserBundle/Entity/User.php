@@ -10,10 +10,13 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  * @ORM\Table(name="fos_user")
+ * @ORM\Entity(repositoryClass="SC\UserBundle\Entity\UserRepository")
  */
 class User extends BaseUser
 {
     /**
+     * @var int
+     *
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -21,11 +24,15 @@ class User extends BaseUser
     protected $id;
 
     /**
+     * @var ArrayCollection
+     *
      * @ORM\ManyToMany(targetEntity="User", mappedBy="myContacts")
      */
     private $contactsWithMe;
 
     /**
+     * @var ArrayCollection
+     *
      * @ORM\ManyToMany(targetEntity="User", inversedBy="contactsWithMe")
      * @ORM\JoinTable(name="contacts",
      *     joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
@@ -34,11 +41,27 @@ class User extends BaseUser
      */
     private $myContacts;
 
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="SC\MessageBundle\Entity\Message", mappedBy="from")
+     */
+    private $sentMessages;
+
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="SC\MessageBundle\Entity\Message", mappedBy="to")
+     */
+    private $receivedMessages;
+
     public function __construct() {
         parent::__construct();
 
-        $this->contactsWithMe = new ArrayCollection();
-        $this->myContacts = new ArrayCollection();
+        $this->contactsWithMe       = new ArrayCollection();
+        $this->myContacts           = new ArrayCollection();
+        $this->sentMessages         = new ArrayCollection();
+        $this->$receivedMessages    = new ArrayCollection();
     }
 
     /**
@@ -115,5 +138,37 @@ class User extends BaseUser
     public function getMyContacts()
     {
         return $this->myContacts;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSentMessages()
+    {
+        return $this->sentMessages;
+    }
+
+    /**
+     * @param mixed $sentMessages
+     */
+    public function setSentMessages($sentMessages)
+    {
+        $this->sentMessages = $sentMessages;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getReceivedMessages()
+    {
+        return $this->receivedMessages;
+    }
+
+    /**
+     * @param ArrayCollection $receivedMessages
+     */
+    public function setReceivedMessages($receivedMessages)
+    {
+        $this->receivedMessages = $receivedMessages;
     }
 }
