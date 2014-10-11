@@ -45,3 +45,8 @@ Check the installation :
 #### Check the Symfony2 configuration
 
 [http://fhacktory.dev/config.php](http://fhacktory.dev/config.php)
+
+#### Load the fixtures
+
+    php app/console doctrine:fixtures:load
+

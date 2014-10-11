@@ -24,7 +24,8 @@
         "components/font-awesome": "4.*",
         "braincrafted/bootstrap-bundle": "dev-master",
         "friendsofsymfony/user-bundle": "~2.0@dev",
-        "jdare/clank-bundle": "0.1.*"
+        "jdare/clank-bundle": "0.1.*",
+        "doctrine/doctrine-fixtures-bundle": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"
