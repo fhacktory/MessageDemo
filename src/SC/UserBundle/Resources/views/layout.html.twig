@@ -1,0 +1,17 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Demo{% endblock %}
+
+{% block header %}
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Smalt <small>Gestion utilisateur</small></h1>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        {% block fos_user_content %}{% endblock %}
+    </div>
+{% endblock %}
