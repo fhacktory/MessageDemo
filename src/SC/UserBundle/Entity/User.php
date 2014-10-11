@@ -55,6 +55,11 @@ class User extends BaseUser
      */
     private $receivedMessages;
 
+    /**
+     * @var bool
+     */
+    private $online;
+
     public function __construct() {
         parent::__construct();
 
@@ -189,5 +194,24 @@ class User extends BaseUser
     public function setReceivedMessages($receivedMessages)
     {
         $this->receivedMessages = $receivedMessages;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isOnline()
+    {
+        return $this->online;
+    }
+
+    /**
+     * @param boolean $online
+     * @return $this
+     */
+    public function setOnline($online)
+    {
+        $this->online = $online;
+
+        return $this;
     }
 }
