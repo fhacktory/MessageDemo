@@ -1,0 +1,5 @@
+sc_demo:
+    resource: "@SCDemoBundle/Controller/"
+    type:     annotation
+    prefix:   /
+

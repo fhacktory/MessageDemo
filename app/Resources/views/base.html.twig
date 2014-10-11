@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Smalt Fhacktory 2014 - {% block title %}{% endblock %}</title>
+        {% block description %}{% endblock %}
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="navbar">
+                {% block navbar %}{% endblock %}
+            </div>
+            <div id="header">
+                {% block header %}{% endblock %}
+            </div>
+
+            <div id="messages">
+                {% for type, messages in app.session.flashbag.all() %}
+                    <div class="container">
+                        {% for message in messages %}
+                            <div class="alert alert-{{ type }}" role="alert">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div id="content">
+                {% block content %}{% endblock %}
+            </div>
+            <div id="footer">
+                {% block footer %}{% endblock %}
+            </div>
+            <div id="javascripts">
+                {% block javascripts %}{% endblock %}
+            </div>
+        </div>
+    </body>
+</html>
