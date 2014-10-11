@@ -1,0 +1,13 @@
+{% if message %}
+    <div id="message-{{ message.id }}" class="message">
+        <div class="popover popover-static {% if message.from == app.user %}left popover-static-left{% else %}right popover-static-right{% endif %}">
+            <div class="arrow"></div>
+            <h3 class="popover-title">
+                {{ message.from.username }}
+            </h3>
+            <div class="popover-content">
+                <p>{{ message.content }}</p>
+            </div>
+        </div>
+    </div>
+{% endif %}

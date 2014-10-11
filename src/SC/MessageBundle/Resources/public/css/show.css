@@ -1,0 +1,15 @@
+.popover-static {
+    position: relative;
+    display: block;
+    width: 80%;
+    margin: 20px;
+    max-width: none;
+}
+
+.popover-static-right {
+    float: left;
+}
+
+.popover-static-left {
+    float: right;
+}

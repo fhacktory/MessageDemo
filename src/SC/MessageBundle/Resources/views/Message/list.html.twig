@@ -1,0 +1,69 @@
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets filter='cssrewrite, ?uglifycss' output='css/compiled/message/message/list.css'
+        'bundles/scmessage/css/list.css'
+    %}
+        <link href="{{ asset_url }}" rel="stylesheet" media="screen">
+    {% endstylesheets %}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        {% if user and contacts|length > 0 %}
+            <div class="row">
+                <div class="col-xs-6 col-sm-4 col-md-3">
+                    <aside>
+                        <nav class="tabs">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">Mes contacts</div>
+                                <ul class="list-group">
+                                    {% for contact in contacts %}
+                                        <li class="list-group-item" role="tab" data-toggle="tab">
+                                            <div class="media">
+                                                <a href="contact-{{ contact.id }}-tab">
+                                                    <img id="user-{{ contact.id }}-avatar" class="avatar pull-left media-object" src="#" alt="{{ contact.username }}">
+                                                </a>
+                                                <div class="media-body">
+                                                    <h4 id="user-{{ contact.id }}-username" class="username media-heading">{{ contact.username }}</h4>
+                                                    <p><i class="fa-li fa fa-circle"></i> <span id="user-{{ contact.id }}-status-info" class="user-status-info"></span></p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </nav>
+                    </aside>
+                </div>
+                <div class="col-xs-6 col-sm-8 col-md-9">
+                    <div class="tab-content">
+                        {% for contact in contacts %}
+                            <div class="tab-pane active" id="contact-{{ contact.id }}-tab">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">{{ contact.username }} - conversation</div>
+                                    <div class="panel-body">
+                                        <section id="contact-{{ contact.id }}-messages" class="messages">
+
+                                        </section>
+                                    </div>
+                                    <div class="panel-footer">
+                                        <form>
+                                            <textarea class="form-control" rows="3"></textarea>
+                                            <button type="submit" class="btn btn-success"><i class="fa fa-send"></i> Envoyer</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <h2>Pas encore de contact ?</h2>
+            <p><a class="btn btn-default btn-lg"><i class="fa fa-users"></i> Trouver des contacts</a></p>
+        {% endif %}
+    </div>
+
+{% endblock %}

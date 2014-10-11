@@ -1,0 +1,3 @@
+sc_message_list:
+    path:     /messages
+    defaults: { _controller: SCMessageBundle:Message:list }
