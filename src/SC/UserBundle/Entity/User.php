@@ -2,6 +2,8 @@
 
 namespace SC\UserBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -20,23 +22,23 @@ class User extends BaseUser
 
     /**
      * @ORM\ManyToMany(targetEntity="User", mappedBy="myContacts")
-     **/
+     */
     private $contactsWithMe;
 
     /**
      * @ORM\ManyToMany(targetEntity="User", inversedBy="contactsWithMe")
      * @ORM\JoinTable(name="contacts",
-     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="contact_user_id", referencedColumnName="id")}
-     *      )
-     **/
+     *     joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+     *     inverseJoinColumns={@ORM\JoinColumn(name="contact_user_id", referencedColumnName="id")}
+     * )
+     */
     private $myContacts;
 
     public function __construct() {
         parent::__construct();
 
-        $this->$contactsWithMe = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->$myContacts = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->contactsWithMe = new ArrayCollection();
+        $this->myContacts = new ArrayCollection();
     }
 
     /**
@@ -52,10 +54,10 @@ class User extends BaseUser
     /**
      * Add contactsWithMe
      *
-     * @param \SC\UserBundle\Entity\User $contactsWithMe
+     * @param User $contactsWithMe
      * @return User
      */
-    public function addContactsWithMe(\SC\UserBundle\Entity\User $contactsWithMe)
+    public function addContactsWithMe(User $contactsWithMe)
     {
         $this->contactsWithMe[] = $contactsWithMe;
 
@@ -65,9 +67,9 @@ class User extends BaseUser
     /**
      * Remove contactsWithMe
      *
-     * @param \SC\UserBundle\Entity\User $contactsWithMe
+     * @param User $contactsWithMe
      */
-    public function removeContactsWithMe(\SC\UserBundle\Entity\User $contactsWithMe)
+    public function removeContactsWithMe(User $contactsWithMe)
     {
         $this->contactsWithMe->removeElement($contactsWithMe);
     }
@@ -75,7 +77,7 @@ class User extends BaseUser
     /**
      * Get contactsWithMe
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return Collection
      */
     public function getContactsWithMe()
     {
@@ -85,10 +87,10 @@ class User extends BaseUser
     /**
      * Add myContacts
      *
-     * @param \SC\UserBundle\Entity\User $myContacts
+     * @param User $myContacts
      * @return User
      */
-    public function addMyContact(\SC\UserBundle\Entity\User $myContacts)
+    public function addMyContact(User $myContacts)
     {
         $this->myContacts[] = $myContacts;
 
@@ -98,9 +100,9 @@ class User extends BaseUser
     /**
      * Remove myContacts
      *
-     * @param \SC\UserBundle\Entity\User $myContacts
+     * @param User $myContacts
      */
-    public function removeMyContact(\SC\UserBundle\Entity\User $myContacts)
+    public function removeMyContact(User $myContacts)
     {
         $this->myContacts->removeElement($myContacts);
     }
@@ -108,7 +110,7 @@ class User extends BaseUser
     /**
      * Get myContacts
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return Collection
      */
     public function getMyContacts()
     {
