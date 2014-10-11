@@ -22,7 +22,8 @@
         "components/jquery": "1.11.*",
         "components/jqueryui": "1.11.*",
         "components/font-awesome": "4.*",
-        "braincrafted/bootstrap-bundle": "dev-master"
+        "braincrafted/bootstrap-bundle": "dev-master",
+        "friendsofsymfony/user-bundle": "~2.0@dev"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

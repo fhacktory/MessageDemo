@@ -1,3 +1,8 @@
+sc_user:
+    resource: "@SCUserBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 sc_demo:
     resource: "@SCDemoBundle/Controller/"
     type:     annotation
