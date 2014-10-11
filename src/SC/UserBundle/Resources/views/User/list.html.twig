@@ -1,0 +1,38 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Utilisateurs{% endblock %}
+
+{% block header %}
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Utilisateurs</h1>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                {% for user in users %}
+                    {% if user != app.user %}
+                        <button class="btn user" data-user-id="{{ user.id }}" data-is-contact="{{ user.id in contacts|keys }}">
+                            <i class="fa {{ user.id in contacts|keys ? 'fa-minus' : 'fa-plus' }}"></i>
+                            {{ user.username }}
+                        </button>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    {% javascripts filter='?uglifyjs2' output='js/compiled/scuser/list.js'
+        'bundles/scuser/js/list.js'
+    %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}

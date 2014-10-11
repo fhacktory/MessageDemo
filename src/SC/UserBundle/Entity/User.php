@@ -61,7 +61,7 @@ class User extends BaseUser
         $this->contactsWithMe       = new ArrayCollection();
         $this->myContacts           = new ArrayCollection();
         $this->sentMessages         = new ArrayCollection();
-        $this->$receivedMessages    = new ArrayCollection();
+        $this->receivedMessages     = new ArrayCollection();
     }
 
     /**
@@ -146,6 +146,25 @@ class User extends BaseUser
     public function getSentMessages()
     {
         return $this->sentMessages;
+    }
+
+    /**
+     * @return array
+     */
+    public function getContacts()
+    {
+        $contacts = array();
+
+        foreach(array('contactsWithMe', 'myContacts') as $relation) {
+            /** @var User $contact */
+            foreach ($this->$relation as $contact) {
+                if (!isset($contacts[$contact->getId()])) {
+                    $contacts[$contact->getId()] = $contact;
+                }
+            }
+        }
+
+        return $contacts;
     }
 
     /**

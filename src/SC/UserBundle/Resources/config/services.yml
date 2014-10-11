@@ -1,0 +1,9 @@
+services:
+  inck_user.event_listener.login:
+      class: SC\UserBundle\EventListener\LoginListener
+      arguments: [@session, @security.context]
+      tags:
+          - { name: kernel.event_subscriber }
+  sc_user.rpc.contact:
+      class: SC\UserBundle\RPC\Contact
+      arguments: [@doctrine.orm.entity_manager]

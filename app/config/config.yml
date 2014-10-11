@@ -38,7 +38,7 @@ twig:
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        [ SCDemoBundle, JDareClankBundle, SCUserBundle, SCMessageBundle ]
+    bundles:        [ JDareClankBundle, FOSUserBundle, SCDemoBundle, SCUserBundle, SCMessageBundle ]
     #java: /usr/bin/java
     filters:
         less:
@@ -111,10 +111,14 @@ fos_user:
 
 # Clank Configuration
 clank:
+    session_handler: "%session_handler%"
     web_socket_server:
         host: "%clank_host%"
         port: "%clank_port%"
-        session_handler: "%session_handler%"
+    rpc:
+        -
+            name: "contact"
+            service: "sc_user.rpc.contact"
 
 # Memcache Configuration
 services:
