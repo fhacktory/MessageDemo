@@ -1,3 +1,7 @@
+sc_message:
+    resource: "@SCMessageBundle/Resources/config/routing.yml"
+    prefix:   /
+
 sc_user:
     resource: "@SCUserBundle/Controller/"
     type:     annotation

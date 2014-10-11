@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             new JDare\ClankBundle\JDareClankBundle(),
             new SC\DemoBundle\SCDemoBundle(),
             new SC\UserBundle\SCUserBundle(),
+            new SC\MessageBundle\SCMessageBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
