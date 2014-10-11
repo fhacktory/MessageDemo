@@ -30,6 +30,9 @@ twig:
     form:
         resources:
             - BraincraftedBootstrapBundle:Form:bootstrap.html.twig
+    globals:
+        clank_host: "%clank_host%"
+        clank_port: "%clank_port%"
 
 # Assetic Configuration
 assetic:
