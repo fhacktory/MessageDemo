@@ -67,6 +67,11 @@ class Message
     private $to;
 
 
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime();
+    }
+
     /**
      * Get id
      *
@@ -179,10 +184,13 @@ class Message
 
     /**
      * @param User $from
+     * @return $this
      */
     public function setFrom($from)
     {
         $this->from = $from;
+
+        return $this;
     }
 
     /**
@@ -195,9 +203,12 @@ class Message
 
     /**
      * @param User $to
+     * @return $this
      */
     public function setTo($to)
     {
         $this->to = $to;
+
+        return $this;
     }
 }

@@ -129,6 +129,9 @@ clank:
         -
             name: "user"
             service: "sc_user.topic.connection"
+        -
+            name: "discussion"
+            service: "sc_message.topic.discussion"
 
 # Memcache Configuration
 services:

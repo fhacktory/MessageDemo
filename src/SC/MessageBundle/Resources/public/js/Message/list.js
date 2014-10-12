@@ -1,4 +1,4 @@
-$(function() {
+$(document).ready(function() {
     $('#contacts-tab a').click(function(e) {
         e.preventDefault();
         $(this).tab('show');
@@ -28,6 +28,11 @@ $(function() {
         e.preventDefault();
         var textarea = $(this).closest('form').find('textarea:first');
         var content = textarea.val();
+
+        window.session.publish('discussion/' + getDiscussionId($(this).attr('data-contact-id')), {
+            message: content
+        });
+
         textarea.val('');
     });
 });

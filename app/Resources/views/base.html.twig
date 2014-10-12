@@ -61,6 +61,7 @@
 
                     <script type="text/javascript">
                         window.WEBSOCKET_SERVER_URI = 'ws://{{ clank_host }}:{{ clank_port }}';
+                        window.USER_ID = '{{ app.user.id }}';
                     </script>
 
                     {% javascripts filter='?uglifyjs2' output='js/compiled/base/user.js'

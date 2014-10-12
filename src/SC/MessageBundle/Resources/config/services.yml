@@ -5,3 +5,6 @@ services:
     sc_message.rpc.discussion:
         class: SC\MessageBundle\RPC\Discussion
         arguments: [@doctrine.orm.entity_manager, @templating]
+    sc_message.topic.discussion:
+        class: SC\MessageBundle\Topic\Discussion
+        arguments: [@doctrine.orm.entity_manager, @templating]
