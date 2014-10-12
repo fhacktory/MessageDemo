@@ -6,6 +6,7 @@
     <div class="jumbotron">
         <div class="container">
             <h1>Utilisateurs</h1>
+            <p><a class="btn btn-default" href="{{ path('home') }}"><i class="fa fa-home"></i> Retour à l'accueil</a></p>
         </div>
     </div>
 {% endblock %}
@@ -29,7 +30,6 @@
 
 {% block javascripts %}
     {{ parent() }}
-
     {% javascripts filter='?uglifyjs2' output='js/compiled/scuser/list.js'
         'bundles/scuser/js/list.js'
     %}
