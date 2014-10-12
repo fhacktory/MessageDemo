@@ -18,7 +18,7 @@
 }
 
 .tab-pane .panel-heading .label.online {
-    color: #5cb85c;
+    background-color: #5cb85c;
 }
 
 .tab-content .messages {
