@@ -7,7 +7,11 @@
                 <span data-contact-id="{{ contact.id }}" class="label label-default contact-label-status {{ contact.isOnline() ? 'online' : 'offline' }}">{{ contact.username }}</span>
             </div>
             <div id="contact-{{ contact.id }}-messages" class="panel-body messages">
-
+                {% if user is defined %}
+                    {% include 'SCMessageBundle:Message:discussion.html.twig' with { 'messages': messages, 'user': user } %}
+                {% else %}
+                    {% include 'SCMessageBundle:Message:discussion.html.twig' with { 'messages': messages } %}
+                {% endif %}
             </div>
             <div class="panel-footer">
                 <form>

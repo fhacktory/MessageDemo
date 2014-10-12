@@ -4,7 +4,7 @@
             <div class="arrow"></div>
             <h3 class="popover-title">
                 <span class="pull-right">
-                    le {{ message.createdAt|date('d/m/Y à H:i:s') }}
+                    {{ message.createdAt|date('d/m H:i:s') }}
                 </span>
                 {{ message.from.username }}
             </h3>

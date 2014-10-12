@@ -18,6 +18,7 @@
 
 .popup-container .messages {
     height: 190px;
+    overflow: auto;
 }
 
 .popup {

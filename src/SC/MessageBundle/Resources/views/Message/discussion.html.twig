@@ -1,3 +1,9 @@
-{% for message in messages %}
-    {% include('SCMessageBundle:Message:show.html.twig') %}
-{% endfor %}
+{% if user is defined %}
+    {% for message in messages %}
+        {% include 'SCMessageBundle:Message:show.html.twig' with { 'user': user } %}
+    {% endfor %}
+{% else %}
+    {% for message in messages %}
+        {% include('SCMessageBundle:Message:show.html.twig') %}
+    {% endfor %}
+{% endif %}

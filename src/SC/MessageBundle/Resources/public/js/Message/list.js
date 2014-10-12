@@ -4,6 +4,8 @@ $(document).ready(function() {
         $(this).tab('show');
     });
 
+    scrollToBottom($('.tab-pane.active:first .messages:first'));
+
     $('body').on('click', 'a[data-open="0"]', function(){
         $(this).attr('data-open', '1');
         var page = $(this).attr('data-next-page');
@@ -18,9 +20,9 @@ $(document).ready(function() {
             page: page
         }).then(function(result){
             $(this).attr('data-next-page', page + 1);
-            $(id).find('.messages:first').prepend(result);
-        }, function(error, desc){
-            console.log('RPC Error', error, desc);
+            var messages = $(id).find('.messages:first');
+            messages.prepend(result);
+            scrollToBottom(messages);
         });
     });
 

@@ -20,3 +20,7 @@ body {
 .contacts .tab-pane .panel-heading .label.online {
     background-color: #5cb85c;
 }
+
+.popover, .popover-title {
+    font-size: 10px;
+}

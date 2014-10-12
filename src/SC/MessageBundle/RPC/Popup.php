@@ -2,17 +2,17 @@
 
 namespace SC\MessageBundle\RPC;
 
+use Doctrine\Common\Util\Debug;
 use Ratchet\ConnectionInterface as Conn;
+use SC\MessageBundle\Traits\MessageTrait;
 use SC\UserBundle\Entity\User;
 use Doctrine\Common\Persistence\ObjectManager;
+use SC\UserBundle\Traits\UserTrait;
 use Symfony\Bundle\TwigBundle\TwigEngine;
 
 class Popup
 {
-    /**
-     * @var ObjectManager
-     */
-    private $em;
+    use UserTrait, MessageTrait;
 
     /**
      * @var TwigEngine
@@ -50,10 +50,13 @@ class Popup
                 throw new \Exception('Invalid parameter "id"');
             }
 
-            $view = $this->templating->render(
-                'SCMessageBundle:Message:popup.html.twig',
-                array('contact' => $contact)
-            );
+            $user = $this->getUser($conn);
+
+            $view = $this->templating->render('SCMessageBundle:Message:popup.html.twig', array(
+                'contact'   => $contact,
+                'messages'  => $this->getMessages($this->em, $user, $contact),
+                'user'      => $user,
+            ));
 
             return $view;
         } catch(\Exception $e) {

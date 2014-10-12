@@ -8,6 +8,12 @@ function getDiscussionId(id) {
         : id + '-' + window.USER_ID;
 }
 
+function scrollToBottom(div) {
+    div.animate({
+        scrollTop: div[0].scrollHeight
+    }, 500);
+}
+
 window.server.on('socket/connect', function(session){
     window.connected = true;
     window.session = session;
@@ -59,7 +65,9 @@ window.server.on('socket/connect', function(session){
                     .addClass('right popover-static-right');
             }
 
-            $('#contact-' + messagesId + '-messages').append(message);
+            var messages = $('#contact-' + messagesId + '-messages');
+            messages.append(message);
+            scrollToBottom(messages);
         });
     });
 });
