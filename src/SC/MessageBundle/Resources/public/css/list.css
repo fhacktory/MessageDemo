@@ -17,7 +17,7 @@
     display: block;
 }
 
-.messages .label.online {
+.tab-pane .panel-heading .label.online {
     color: #5cb85c;
 }
 
