@@ -119,6 +119,10 @@ clank:
         -
             name: "contact"
             service: "sc_user.rpc.contact"
+    topic:
+        -
+            name: "user"
+            service: "sc_user.topic.connection"
 
 # Memcache Configuration
 services:

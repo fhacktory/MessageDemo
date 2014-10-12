@@ -3,7 +3,6 @@
 namespace SC\UserBundle\RPC;
 
 use Doctrine\Common\Persistence\ObjectManager;
-use Doctrine\Common\Util\Debug;
 use Ratchet\ConnectionInterface as Conn;
 use SC\UserBundle\Entity\User;
 

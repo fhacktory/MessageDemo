@@ -7,3 +7,6 @@ services:
   sc_user.rpc.contact:
       class: SC\UserBundle\RPC\Contact
       arguments: [@doctrine.orm.entity_manager]
+  sc_user.topic.connection:
+      class: SC\UserBundle\Topic\Connection
+      arguments: [@doctrine.orm.entity_manager]

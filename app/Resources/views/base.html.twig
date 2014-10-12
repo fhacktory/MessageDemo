@@ -43,19 +43,26 @@
                 {% block footer %}{% endblock %}
             </div>
             {% block javascripts %}
-                {{ clank_client() }}
-
-                <script type="text/javascript">
-                    window.WEBSOCKET_SERVER_URI = 'ws://{{ clank_host }}:{{ clank_port }}';
-                </script>
-
                 {% javascripts filter='?uglifyjs2' output='js/compiled/base.js'
                     'js/jquery.js'
                     'js/bootstrap.js'
-                    'bundles/scmessage/js/server.js'
                 %}
                     <script src="{{ asset_url }}"></script>
                 {% endjavascripts %}
+
+                {% if app.user is not null and is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    {{ clank_client() }}
+
+                    <script type="text/javascript">
+                        window.WEBSOCKET_SERVER_URI = 'ws://{{ clank_host }}:{{ clank_port }}';
+                    </script>
+
+                    {% javascripts filter='?uglifyjs2' output='js/compiled/base/user.js'
+                        'bundles/scmessage/js/server.js'
+                    %}
+                        <script src="{{ asset_url }}"></script>
+                    {% endjavascripts %}
+                {% endif %}
             {% endblock %}
         </div>
     </body>

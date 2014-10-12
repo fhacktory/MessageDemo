@@ -66,7 +66,7 @@ class LoginListener implements EventSubscriberInterface
     /**
      * @param UserInterface $user
      */
-    private function setSession(UserInterface $user)
+    private function setSession($user)
     {
         $this->session->set('user', $user);
     }
