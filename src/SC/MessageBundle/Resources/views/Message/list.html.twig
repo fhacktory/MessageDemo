@@ -28,12 +28,12 @@
                                 <div class="panel-heading">Mes contacts</div>
                                 <div id="contacts-tab" class="list-group contacts">
                                     {% for contact in contacts %}
-                                        <a href="#contact-{{ contact.id }}-tab" class="list-group-item {{ contact.isOnline() ? 'online' : 'disabled offline' }}role="tab" data-toggle="tab">
+                                        <a href="#contact-{{ contact.id }}-tab" class="list-group-item {{ contact.isOnline() ? 'online' : 'disabled offline' }}" role="tab" data-toggle="tab">
                                             <div class="media">
                                                 <img id="contact-{{ contact.id }}-avatar" class="avatar pull-left media-object" src="{{ gravatar(contact.email, 50, 'g', 'mm', true) }}" alt="{{ contact.username }}">
                                                 <div class="media-body">
                                                     <h4 id="contact-{{ contact.id }}-username" class="username media-heading">{{ contact.username }}</h4>
-                                                    <p><i class="fa fa-circle"></i> <span id="contact-{{ contact.id }}-status-info" class="contact-status-info"></span></p>
+                                                    <p id="contact-{{ contact.id }}-status-info" class="contact-status-info contact-{{ contact.id }}-status-info {{ contact.isOnline() ? 'online' : 'offline' }}"><i class="fa fa-circle"></i> <span>{{ contact.isOnline() ? 'En ligne' : 'Hors Ligne' }}</span></p>
                                                 </div>
                                             </div>
                                         </a>
@@ -48,7 +48,10 @@
                         {% for contact in contacts %}
                             <div id="contact-{{ contact.id }}-tab" class="tab-pane {% if loop.first %}active{% endif %}">
                                 <div class="panel panel-default">
-                                    <div class="panel-heading">{{ contact.username }}</div>
+                                    <div class="panel-heading">
+                                        <img class="avatar" src="{{ gravatar(contact.email, 20, 'g', 'mm', true) }}" alt="{{ contact.username }}">
+                                        <span class="label label-default {{ contact.isOnline() ? 'online' : 'offline' }}">{{ contact.username }}</span>
+                                    </div>
                                     <div id="contact-{{ contact.id }}-messages" class="panel-body messages">
 
                                     </div>
@@ -57,8 +60,19 @@
                                             <div class="form-group">
                                                 <textarea class="form-control" rows="3"></textarea>
                                             </div>
-                                            <div class="form-group text-right">
-                                                <button type="submit" class="btn btn-success btn-xs"><i class="fa fa-send"></i> Envoyer</button>
+                                            <div class="text-right">
+                                                <button class="btn btn-default btn-xs">
+                                                    <i class="fa fa-link fa-fw"></i>
+                                                    <span class="hidden-xs">Joindre des fichiers</span>
+                                                </button>
+                                                <button class="btn btn-default btn-xs">
+                                                    <i class="fa fa-camera fa-fw"></i>
+                                                    <span class="hidden-xs">Joindre des des photos</span>
+                                                </button>
+                                                <button type="submit" class="btn btn-success btn-xs">
+                                                    <i class="fa fa-send fa-fw"></i>
+                                                    <span class="hidden-xs">Envoyer</span>
+                                                </button>
                                             </div>
                                         </form>
                                     </div>

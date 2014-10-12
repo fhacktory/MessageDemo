@@ -3,6 +3,10 @@
     overflow-y: auto;
 }
 
+.contacts .contact-status-info.online {
+    color: #5cb85c;
+}
+
 .tab-pane {
     height: 400px;
     max-height: 400px;
@@ -13,7 +17,11 @@
     display: block;
 }
 
+.messages .label.online {
+    color: #5cb85c;
+}
+
 .tab-content .messages {
-    min-height: 244px;
+    min-height: 258px;
     overflow-y: auto;
 }

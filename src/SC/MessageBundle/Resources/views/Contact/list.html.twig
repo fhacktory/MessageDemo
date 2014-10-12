@@ -3,10 +3,10 @@
         {% for contact in contacts %}
             <a class="list-group-item {{ contact.isOnline() ? 'online' : 'disabled offline' }}" role="tab" data-toggle="tab">
                 <div class="media">
-                    <img id="contact-{{ contact.id }}-avatar" class="avatar pull-left media-object" src="#" alt="{{ contact.username }}">
+                    <img id="contact-{{ contact.id }}-avatar" class="avatar pull-left media-object" src="{{ gravatar(contact.email, 50, 'g', 'mm', true) }}" alt="{{ contact.username }}">
                     <div class="media-body">
                         <h4 id="contact-{{ contact.id }}-username" class="username media-heading">{{ contact.username }}</h4>
-                        <p><i class="fa fa-circle"></i> <span id="contact-{{ contact.id }}-status-info" class="contact-status-info"></span></p>
+                        <p id="contact-{{ contact.id }}-status-info" class="contact-status-info contact-{{ contact.id }}-status-info {{ contact.isOnline() ? 'online' : 'offline' }}"><i class="fa fa-circle"></i> <span>{{ contact.isOnline() ? 'En ligne' : 'Hors Ligne' }}</span></p>
                     </div>
                 </div>
             </a>
