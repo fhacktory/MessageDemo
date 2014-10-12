@@ -57,6 +57,7 @@ class User extends BaseUser
 
     /**
      * @var bool
+     * @ORM\Column(type="boolean")
      */
     private $online;
 
@@ -67,6 +68,8 @@ class User extends BaseUser
         $this->myContacts           = new ArrayCollection();
         $this->sentMessages         = new ArrayCollection();
         $this->receivedMessages     = new ArrayCollection();
+
+        $this->online = false;
     }
 
     /**
