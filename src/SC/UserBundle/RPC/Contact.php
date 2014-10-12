@@ -2,24 +2,13 @@
 
 namespace SC\UserBundle\RPC;
 
-use Doctrine\Common\Persistence\ObjectManager;
 use Ratchet\ConnectionInterface as Conn;
 use SC\UserBundle\Entity\User;
+use SC\UserBundle\Traits\UserTrait;
 
 class Contact
 {
-    /**
-     * @var ObjectManager
-     */
-    private $em;
-
-    /**
-     * @param ObjectManager $em
-     */
-    public function __construct(ObjectManager $em)
-    {
-        $this->em = $em;
-    }
+    use UserTrait;
 
     /**
      * @param \Ratchet\ConnectionInterface $conn
@@ -30,8 +19,7 @@ class Contact
     {
         try {
             // Utilisateur connecté
-            /** @var User $user */
-            $user = $this->em->merge($conn->Session->get('user'));
+            $user = $this->getUser($conn);
 
             // Contact sélectionné
             $repository = $this->em->getRepository('SCUserBundle:User');

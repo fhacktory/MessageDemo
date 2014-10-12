@@ -7,15 +7,22 @@ window.server.on('socket/connect', function(session){
     window.session = session;
 
     session.subscribe('user/connection', function(uri, parameters){
-        $('.contact-' + parameters.id + '-status-info').each(function(){
-            if($(this).hasClass('online')){
-                $(this)
-                    .removeClass('online')
-                    .addClass('offline');
-            } else {
+        console.log(parameters.id, 'is', (parameters.online) ? 'online' : 'offline');
+        $('[data-contact-id="' + parameters.id + '"]').each(function(){
+            if(parameters.online){
                 $(this)
                     .removeClass('offline')
+                    .removeClass('disabled')
                     .addClass('online');
+
+                $(this).find('p.contact-status-info span').text('En ligne');
+            } else {
+                $(this)
+                    .removeClass('online')
+                    .addClass('offline')
+                    .addClass('disabled');
+
+                $(this).find('p.contact-status-info span').text('Hors ligne');
             }
         });
     });

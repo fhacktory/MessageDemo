@@ -32,8 +32,13 @@
                                             <div class="media">
                                                 <img id="contact-{{ contact.id }}-avatar" class="avatar pull-left media-object" src="{{ gravatar(contact.email, 50, 'g', 'mm', true) }}" alt="{{ contact.username }}">
                                                 <div class="media-body">
-                                                    <h4 id="contact-{{ contact.id }}-username" class="username media-heading">{{ contact.username }}</h4>
-                                                    <p id="contact-{{ contact.id }}-status-info" class="contact-status-info"><i class="fa fa-circle"></i> <span>{{ contact.isOnline() ? 'En ligne' : 'Hors Ligne' }}</span></p>
+                                                    <h4 id="contact-{{ contact.id }}-username" class="username media-heading">
+                                                        {{ contact.username }}
+                                                    </h4>
+                                                    <p id="contact-{{ contact.id }}-status-info" class="contact-status-info">
+                                                        <i class="fa fa-circle"></i>
+                                                        <span>{{ contact.isOnline() ? 'En ligne' : 'Hors ligne' }}</span>
+                                                    </p>
                                                 </div>
                                             </div>
                                         </a>

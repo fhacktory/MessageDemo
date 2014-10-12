@@ -2,26 +2,15 @@
 
 namespace SC\UserBundle\Topic;
 
-use Doctrine\Common\Persistence\ObjectManager;
 use JDare\ClankBundle\Topic\TopicInterface;
 use Ratchet\ConnectionInterface as Conn;
 use Ratchet\Wamp\Topic;
 use SC\UserBundle\Entity\User;
+use SC\UserBundle\Traits\UserTrait;
 
 class Connection implements TopicInterface
 {
-    /**
-     * @var ObjectManager
-     */
-    private $em;
-
-    /**
-     * @param ObjectManager $em
-     */
-    public function __construct(ObjectManager $em)
-    {
-        $this->em = $em;
-    }
+    use UserTrait;
 
     /**
      * @param Conn $conn
@@ -79,20 +68,5 @@ class Connection implements TopicInterface
             'id'        => $user->getId(),
             'online'    => $user->isOnline(),
         ));
-    }
-
-    /**
-     * @param Conn $conn
-     * @return User
-     */
-    private function getUser($conn)
-    {
-        $user = $this->em->merge(
-            $conn->Session->get('user')
-        );
-
-        $this->em->refresh($user);
-
-        return $user;
     }
 }
