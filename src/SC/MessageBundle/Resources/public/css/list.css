@@ -17,7 +17,7 @@
     display: block;
 }
 
-.contacts  .tab-pane .panel-heading .label.online {
+.label.contact-label-status.online {
     background-color: #5cb85c;
 }
 

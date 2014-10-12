@@ -1,16 +1,17 @@
 {% if contact %}
     <div id="contact-{{ contact.id }}-popup" class="popup-container">
-        <div class="panel panel-default">
+        <div class="panel panel-default popup">
             <div class="panel-heading">
+                <button data-popup-id="contact-{{ contact.id }}-popup" type="button" class="close" data-dismiss="popup"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 <img class="avatar" src="{{ gravatar(contact.email, 20, 'g', 'mm', true) }}" alt="{{ contact.username }}">
-                <span data-contact-id="{{ contact.id }}" class="label label-default {{ contact.isOnline() ? 'online' : 'offline' }}">{{ contact.username }}</span>
+                <span data-contact-id="{{ contact.id }}" class="label label-default contact-label-status {{ contact.isOnline() ? 'online' : 'offline' }}">{{ contact.username }}</span>
             </div>
             <div id="contact-{{ contact.id }}-messages" class="panel-body messages">
 
             </div>
             <div class="panel-footer">
                 <form>
-                    <div class="form-group">
+                    <div>
                         <div class="input-group input-group-sm">
                             <input type="text" class="form-control">
                             <div class="input-group-btn">

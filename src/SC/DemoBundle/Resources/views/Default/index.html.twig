@@ -34,19 +34,17 @@
                         <h4>Le bundle Symfony2 pour votre messagerie</h4>
                     </div>
                     <div class="panel-body">
-                        <p>
-                            SCMessageBundle est un projet réalisé par <a href="https://github.com/samybob1">Samy Laumonier</a> et <a href="https://github.com/WaSa42">Nicolas Rouvière</a> lors du fhacktory 2014, un hackathon où le but est de réaliser un projet sur 24h.
-                        </p>
+                        <p>SCMessageBundle est un projet réalisé par <a href="https://github.com/samybob1">Samy Laumonier</a> et <a href="https://github.com/WaSa42">Nicolas Rouvière</a> lors du fhacktory 2014, un hackathon où le but est de réaliser un projet sur 24h.</p>
+                        <p class="text-right"><a href="https://github.com/fhacktory/MessageDemo" class="btn btn-default"><i class="fa fa-github"></i> Voir la documentation</a></p>
                     </div>
                     <div class="panel-footer">
                         {% if app.user %}
-                            <a href="{{ path('fos_user_security_logout') }}" class="btn btn-danger"><i class="fa fa-sign-out"></i> Se déconnecter</a>
-                            <a href="{{ path('sc_contact_list') }}" class="btn btn-default"><i class="fa fa-users"></i> Ajouter des contacts</a>
+                            <a href="{{ path('fos_user_security_logout') }}" class="btn btn-danger btn-sm"><i class="fa fa-sign-out"></i> Se déconnecter</a>
+                            <a href="{{ path('sc_contact_list') }}" class="btn btn-default btn-sm"><i class="fa fa-users"></i> Ajouter des contacts</a>
                         {% else %}
-                            <a href="{{ path('fos_user_security_login') }}" class="btn btn-primary"><i class="fa fa-sign-in"></i> Se connecter</a>
-                            <a href="{{ path('fos_user_registration_register') }}" class="btn btn-default"><i class="fa fa-pencil-square-o"></i> S'enregistrer</a>
+                            <a href="{{ path('fos_user_security_login') }}" class="btn btn-primary btn-sm"><i class="fa fa-sign-in"></i> Se connecter</a>
+                            <a href="{{ path('fos_user_registration_register') }}" class="btn btn-default btn-sm"><i class="fa fa-pencil-square-o"></i> S'enregistrer</a>
                         {% endif %}
-                        <a href="https://github.com/fhacktory/MessageDemo" class="btn btn-link"><i class="fa fa-github"></i> Voir la documentation</a>
                     </div>
                 </div>
             </div>
