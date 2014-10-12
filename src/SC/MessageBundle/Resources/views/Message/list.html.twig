@@ -28,12 +28,12 @@
                                 <div class="panel-heading">Mes contacts</div>
                                 <div id="contacts-tab" class="list-group contacts">
                                     {% for contact in contacts %}
-                                        <a href="#contact-{{ contact.id }}-tab" class="list-group-item {{ contact.isOnline() ? 'online' : 'disabled offline' }}" role="tab" data-toggle="tab">
+                                        <a date-contact-id="{{ contact.id }}" href="#contact-{{ contact.id }}-tab" class="contact list-group-item {{ contact.isOnline() ? 'online' : 'disabled offline' }}" role="tab" data-toggle="tab">
                                             <div class="media">
                                                 <img id="contact-{{ contact.id }}-avatar" class="avatar pull-left media-object" src="{{ gravatar(contact.email, 50, 'g', 'mm', true) }}" alt="{{ contact.username }}">
                                                 <div class="media-body">
                                                     <h4 id="contact-{{ contact.id }}-username" class="username media-heading">{{ contact.username }}</h4>
-                                                    <p id="contact-{{ contact.id }}-status-info" class="contact-status-info contact-{{ contact.id }}-status-info {{ contact.isOnline() ? 'online' : 'offline' }}"><i class="fa fa-circle"></i> <span>{{ contact.isOnline() ? 'En ligne' : 'Hors Ligne' }}</span></p>
+                                                    <p id="contact-{{ contact.id }}-status-info" class="contact-status-info"><i class="fa fa-circle"></i> <span>{{ contact.isOnline() ? 'En ligne' : 'Hors Ligne' }}</span></p>
                                                 </div>
                                             </div>
                                         </a>
@@ -50,7 +50,7 @@
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <img class="avatar" src="{{ gravatar(contact.email, 20, 'g', 'mm', true) }}" alt="{{ contact.username }}">
-                                        <span class="label label-default {{ contact.isOnline() ? 'online' : 'offline' }}">{{ contact.username }}</span>
+                                        <span date-contact-id="{{ contact.id }}" class="label label-default {{ contact.isOnline() ? 'online' : 'offline' }}">{{ contact.username }}</span>
                                     </div>
                                     <div id="contact-{{ contact.id }}-messages" class="panel-body messages">
 

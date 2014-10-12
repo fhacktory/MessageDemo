@@ -3,7 +3,7 @@
     overflow-y: auto;
 }
 
-.contacts .contact-status-info.online {
+.contacts .contact.online p {
     color: #5cb85c;
 }
 
