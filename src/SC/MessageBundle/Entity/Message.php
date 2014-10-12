@@ -13,6 +13,8 @@ use SC\UserBundle\Entity\User;
  */
 class Message
 {
+    const MESSAGES_PER_PAGE = 10;
+
     /**
      * @var integer
      *
@@ -32,14 +34,14 @@ class Message
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="receivedAt", type="datetime")
+     * @ORM\Column(name="receivedAt", type="datetime", nullable=true)
      */
     private $receivedAt;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="readAt", type="datetime")
+     * @ORM\Column(name="readAt", type="datetime", nullable=true)
      */
     private $readAt;
 

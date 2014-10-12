@@ -122,6 +122,9 @@ clank:
         -
             name: "popup"
             service: "sc_message.rpc.popup"
+        -
+            name: "discussion"
+            service: "sc_message.rpc.discussion"
     topic:
         -
             name: "user"

@@ -4,6 +4,7 @@
     {{ parent() }}
     {% stylesheets filter='cssrewrite, ?uglifycss' output='css/compiled/message/message/list.css'
         'bundles/scmessage/css/list.css'
+        'bundles/scmessage/css/show.css'
     %}
         <link href="{{ asset_url }}" rel="stylesheet" media="screen">
     {% endstylesheets %}
@@ -28,7 +29,7 @@
                                 <div class="panel-heading">Mes contacts</div>
                                 <div id="contacts-tab" class="list-group contacts">
                                     {% for contact in contacts %}
-                                        <a data-contact-id="{{ contact.id }}" href="#contact-{{ contact.id }}-tab" class="contact list-group-item {{ contact.isOnline() ? 'online' : 'disabled offline' }}" role="tab" data-toggle="tab">
+                                        <a data-contact-id="{{ contact.id }}" href="#contact-{{ contact.id }}-tab" class="contact list-group-item {{ contact.isOnline() ? 'online' : 'disabled offline' }}" role="tab" data-toggle="tab" data-open="{{ loop.first ? 1 : 0 }}">
                                             <div class="media">
                                                 <img id="contact-{{ contact.id }}-avatar" class="avatar pull-left media-object" src="{{ gravatar(contact.email, 50, 'g', 'mm', true) }}" alt="{{ contact.username }}">
                                                 <div class="media-body">
@@ -58,7 +59,9 @@
                                         <span data-contact-id="{{ contact.id }}" class="label label-default {{ contact.isOnline() ? 'online' : 'offline' }}">{{ contact.username }}</span>
                                     </div>
                                     <div id="contact-{{ contact.id }}-messages" class="panel-body messages">
-
+                                        {% if loop.first %}
+                                            {{ render(controller('SCMessageBundle:Message:discussion', { 'contact': contact })) }}
+                                        {% endif %}
                                     </div>
                                     <div class="panel-body">
                                         <form>
@@ -74,7 +77,7 @@
                                                     <i class="fa fa-camera fa-fw"></i>
                                                     <span class="hidden-xs">Joindre des des photos</span>
                                                 </button>
-                                                <button type="submit" class="btn btn-success btn-xs">
+                                                <button type="submit" class="btn btn-success btn-xs send-message">
                                                     <i class="fa fa-send fa-fw"></i>
                                                     <span class="hidden-xs">Envoyer</span>
                                                 </button>

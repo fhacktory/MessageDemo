@@ -2,13 +2,14 @@
 
 namespace SC\MessageBundle\Controller;
 
+use SC\MessageBundle\Traits\MessageTrait;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class MessageController extends Controller
 {
+    use MessageTrait;
+
     public function listAction()
     {
         $user = $this->getUser();
@@ -26,6 +27,18 @@ class MessageController extends Controller
                 'contacts' => $contacts,
             )
         );
+    }
+
+    public function discussionAction($contact)
+    {
+        return $this->render('SCMessageBundle:Message:discussion.html.twig', array(
+            'user'      => $this->getUser(),
+            'messages'  => $this->getMessages(
+                $this->getDoctrine()->getManager(),
+                $this->getUser(),
+                $contact
+            ),
+        ));
     }
 
     public function popupsAction()

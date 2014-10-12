@@ -1,4 +1,6 @@
 services:
     sc_message.rpc.popup:
         class: SC\MessageBundle\RPC\Popup
+        arguments: [@doctrine.orm.entity_manager, @templating]    sc_message.rpc.discussion:
+        class: SC\MessageBundle\RPC\Discussion
         arguments: [@doctrine.orm.entity_manager, @templating]
