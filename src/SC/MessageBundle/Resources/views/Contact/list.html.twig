@@ -1,5 +1,5 @@
 {% if contacts %}
-    <div class="list-group contacts">
+    <div id="contacts" class="list-group contacts">
         {% for contact in contacts %}
             <a date-contact-id="{{ contact.id }}" class="contact list-group-item {{ contact.isOnline() ? 'online' : 'disabled offline' }}" role="tab" data-toggle="tab">
                 <div class="media">
