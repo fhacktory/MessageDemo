@@ -1,5 +1,12 @@
+html,
 body {
+    height: 100%;
     background: #fff url("../images/fhacktory-background.png");
+    overflow: hidden;
+}
+
+#wrapper {
+    min-height: 100%;
 }
 
 .contacts .contact.online p {

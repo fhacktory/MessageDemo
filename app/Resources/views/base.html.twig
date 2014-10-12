@@ -42,11 +42,11 @@
                 {% block content %}{% endblock %}
             </div>
 
-            {% block popups %}
-                {% if app.user %}
-                    {{ render(controller('SCMessageBundle:Message:popups')) }}
-                {% endif %}
-            {% endblock %}
+            {#{% block popups %}#}
+                {#{% if app.user %}#}
+                    {#{{ render(controller('SCMessageBundle:Message:popups')) }}#}
+                {#{% endif %}#}
+            {#{% endblock %}#}
 
             {% block javascripts %}
                 {% javascripts filter='?uglifyjs2' output='js/compiled/base.js'

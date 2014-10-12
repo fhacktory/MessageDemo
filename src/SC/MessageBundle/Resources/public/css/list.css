@@ -22,6 +22,6 @@
 }
 
 .tab-content .messages {
-    min-height: 258px;
+    height: 258px;
     overflow-y: auto;
 }

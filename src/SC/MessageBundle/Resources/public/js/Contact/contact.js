@@ -8,7 +8,7 @@ $(function() {
                 $(this).show();
             }
             else {
-                $('#popups').find('.col-popup').append(result);
+                $('body').append(result);
             }
         }, function(error, desc) {
             console.log("RPC Error", error, desc);

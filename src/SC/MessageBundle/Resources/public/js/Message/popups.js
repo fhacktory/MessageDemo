@@ -9,11 +9,11 @@ $(function() {
         var element = $('#'+id);
 
         if(element.hasClass('down')) {
-            element.animate({top:'0px'});
+            element.animate({bottom:'285px'});
             element.removeClass('down');
         }
         else {
-            element.animate({top:'242px'});
+            element.animate({bottom:'42px'});
             element.addClass('down');
         }
 
