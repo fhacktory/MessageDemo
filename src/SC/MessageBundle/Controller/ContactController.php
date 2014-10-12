@@ -17,9 +17,7 @@ class ContactController extends Controller
             throw new AccessDeniedException();
         }
 
-        $em = $this->getDoctrine()->getManager();
-        $repository = $em->getRepository('SCUserBundle:User');
-        $contacts = $repository->getContacts($user);
+        $contacts = $user->getContacts();
 
         return $this->render(
             'SCMessageBundle:Contact:list.html.twig',

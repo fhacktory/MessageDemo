@@ -1,0 +1,16 @@
+<div id="popups">
+    <div class="row">
+        <div class="col-xs-1">
+            <nav id="nav-popups" class="hidden">
+                <button class="btn btn-default"><i class="fa fa-comment"></i></button>
+            </nav>
+        </div>
+        <div class="col-xs-11 col-popup">
+            {% if popups is defined %}
+                {% for popup in popups %}
+                    {% include('SCMessageBundle:Message:popup.html.twig') %}
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</div>

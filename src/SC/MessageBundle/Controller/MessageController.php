@@ -27,4 +27,20 @@ class MessageController extends Controller
             )
         );
     }
+
+    public function popupsAction()
+    {
+        $user = $this->getUser();
+
+        if(!$user) {
+            throw new AccessDeniedException();
+        }
+
+        return $this->render(
+            'SCMessageBundle:Message:popups.html.twig',
+            array(
+
+            )
+        );
+    }
 }

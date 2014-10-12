@@ -1,1 +1,4 @@
 services:
+    sc_message.rpc.popup:
+        class: SC\MessageBundle\RPC\Popup
+        arguments: [@doctrine.orm.entity_manager, @templating]

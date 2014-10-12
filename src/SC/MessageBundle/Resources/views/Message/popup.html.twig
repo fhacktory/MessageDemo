@@ -1,0 +1,26 @@
+{% if contact %}
+    <div id="contact-{{ contact.id }}-popup" class="popup-container">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <img class="avatar" src="{{ gravatar(contact.email, 20, 'g', 'mm', true) }}" alt="{{ contact.username }}">
+                <span data-contact-id="{{ contact.id }}" class="label label-default {{ contact.isOnline() ? 'online' : 'offline' }}">{{ contact.username }}</span>
+            </div>
+            <div id="contact-{{ contact.id }}-messages" class="panel-body messages">
+
+            </div>
+            <div class="panel-footer">
+                <form>
+                    <div class="form-group">
+                        <div class="input-group input-group-sm">
+                            <input type="text" class="form-control">
+                            <div class="input-group-btn">
+                                <button class="btn btn-default" type="button"><i class="fa fa-send"></i></button>
+                                <button class="btn btn-default" type="button"><i class="fa fa-smile-o"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endif %}

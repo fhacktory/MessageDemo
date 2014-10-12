@@ -3,6 +3,15 @@
 {% block title %}Demo{% endblock %}
 {% block description %}<meta name="description" content="This is a demo website">{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets filter='cssrewrite, ?uglifycss' output='css/compiled/demo/index.css'
+        'bundles/scdemo/css/index.css'
+    %}
+        <link href="{{ asset_url }}" rel="stylesheet" media="screen">
+    {% endstylesheets %}
+{% endblock %}
+
 {% block header %}
     <div class="jumbotron">
         <div class="container">
@@ -11,4 +20,36 @@
     </div>
 {% endblock %}
 
-{% block content %}{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            {% if app.user %}
+                <div class="col-xs-5">
+                    {{ render(controller('SCMessageBundle:Contact:list')) }}
+                </div>
+            {% endif %}
+            <div class="col-xs-7">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4>Le bundle Symfony2 pour votre messagerie</h4>
+                    </div>
+                    <div class="panel-body">
+                        <p>
+                            SCMessageBundle est un projet réalisé par <a href="https://github.com/samybob1">Samy Laumonier</a> et <a href="https://github.com/WaSa42">Nicolas Rouvière</a> lors du fhacktory 2014, un hackathon où le but est de réaliser un projet sur 24h.
+                        </p>
+                    </div>
+                    <div class="panel-footer">
+                        {% if app.user %}
+                            <a href="{{ path('fos_user_security_logout') }}" class="btn btn-danger"><i class="fa fa-sign-out"></i> Se déconnecter</a>
+                            <a href="{{ path('sc_contact_list') }}" class="btn btn-default"><i class="fa fa-users"></i> Ajouter des contacts</a>
+                        {% else %}
+                            <a href="{{ path('fos_user_security_login') }}" class="btn btn-primary"><i class="fa fa-sign-in"></i> Se connecter</a>
+                            <a href="{{ path('fos_user_registration_register') }}" class="btn btn-default"><i class="fa fa-pencil-square-o"></i> S'enregistrer</a>
+                        {% endif %}
+                        <a href="https://github.com/fhacktory/MessageDemo" class="btn btn-link"><i class="fa fa-github"></i> Voir la documentation</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

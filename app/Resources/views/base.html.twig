@@ -8,6 +8,7 @@
             {% stylesheets filter='cssrewrite, ?uglifycss' output='css/compiled/base.css'
                 'css/bootstrap.css'
                 'components/font-awesome/css/font-awesome.css'
+                'bundles/scmessage/css/Message/popups.css'
             %}
                 <link href="{{ asset_url }}" rel="stylesheet" media="screen">
             {% endstylesheets %}
@@ -20,6 +21,7 @@
             <div id="navbar">
                 {% block navbar %}{% endblock %}
             </div>
+
             <div id="header">
                 {% block header %}{% endblock %}
             </div>
@@ -39,9 +41,13 @@
             <div id="content">
                 {% block content %}{% endblock %}
             </div>
-            <div id="footer">
-                {% block footer %}{% endblock %}
-            </div>
+
+            {% block popups %}
+                {% if app.user %}
+                    {{ render(controller('SCMessageBundle:Message:popups')) }}
+                {% endif %}
+            {% endblock %}
+
             {% block javascripts %}
                 {% javascripts filter='?uglifyjs2' output='js/compiled/base.js'
                     'js/jquery.js'
@@ -59,6 +65,8 @@
 
                     {% javascripts filter='?uglifyjs2' output='js/compiled/base/user.js'
                         'bundles/scmessage/js/server.js'
+                        'bundles/scmessage/js/Contact/contact.js'
+                        'bundles/scmessage/js/Message/popups.js'
                     %}
                         <script src="{{ asset_url }}"></script>
                     {% endjavascripts %}

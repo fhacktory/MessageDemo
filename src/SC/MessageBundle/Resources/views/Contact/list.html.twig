@@ -1,7 +1,7 @@
 {% if contacts %}
     <div id="contacts" class="list-group contacts">
         {% for contact in contacts %}
-            <a date-contact-id="{{ contact.id }}" class="contact list-group-item {{ contact.isOnline() ? 'online' : 'disabled offline' }}" role="tab" data-toggle="tab">
+            <a data-contact-id="{{ contact.id }}" class="contact list-group-item {{ contact.isOnline() ? 'online' : 'disabled offline' }}" role="tab" data-toggle="tab">
                 <div class="media">
                     <img id="contact-{{ contact.id }}-avatar" class="avatar pull-left media-object" src="{{ gravatar(contact.email, 50, 'g', 'mm', true) }}" alt="{{ contact.username }}">
                     <div class="media-body">

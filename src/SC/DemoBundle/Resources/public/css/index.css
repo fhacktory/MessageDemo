@@ -1,0 +1,15 @@
+body {
+    background: #fff url("../images/fhacktory-background.png");
+}
+
+.contacts .contact.online p {
+    color: #5cb85c;
+}
+
+.contacts .contact {
+    cursor: pointer;
+}
+
+.contacts .tab-pane .panel-heading .label.online {
+    background-color: #5cb85c;
+}
